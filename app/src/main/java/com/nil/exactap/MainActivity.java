@@ -1,15 +1,18 @@
 package com.nil.exactap;
 
+import android.content.Context;
 import android.os.Debug;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,15 +30,6 @@ public class MainActivity extends ActionBarActivity {
     private TextView rechargeCount;
 
     private int AP;
-    private int multiCF;
-    private int CF;
-    private int capture;
-    private int complete;
-    private int link;
-    private int resmod;
-    private int hack;
-    private int upgrade;
-    private int recharge;
     private int[] Price = new int[]{2813, 1563, 625, 375, 313, 125, 100, 65, 10};
     private int[] Count = new int[9];
     private boolean found = false;
@@ -91,15 +85,24 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 //for (int i = 0; i < Count.length; i++)
-                    //Log.v("C", Count[i] + "");
+                //Log.v("C", Count[i] + "");
 
                 setText();
             }
         });
+
+        /*editAP.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
+                        hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });*/
     }
 
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -114,12 +117,12 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_settings) {
+        *//*if (id == R.id.action_settings) {
             return true;
-        }*/
+        }*//*
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     private void setText() {
         multiCFCount.setText(Price[0] + "AP x " + Count[0]);
