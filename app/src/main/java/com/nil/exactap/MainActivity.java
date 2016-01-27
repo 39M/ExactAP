@@ -1,18 +1,11 @@
 package com.nil.exactap;
 
-import android.content.Context;
-import android.os.Debug;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -65,7 +58,6 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
                 if (editAP.getText().toString().length() < 1) {
                     Count = new int[9];
                     setText();
@@ -84,45 +76,22 @@ public class MainActivity extends ActionBarActivity {
                         Count[i] = -1;
                 }
 
-                //for (int i = 0; i < Count.length; i++)
-                //Log.v("C", Count[i] + "");
-
                 setText();
             }
         });
-
-        /*editAP.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
-                        hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
-                return true;
-            }
-        });*/
     }
 
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        *//*if (id == R.id.action_settings) {
-            return true;
-        }*//*
-
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     private void setText() {
         multiCFCount.setText(Price[0] + "AP x " + Count[0]);
@@ -141,9 +110,6 @@ public class MainActivity extends ActionBarActivity {
             return;
         if (left == 0) {
             found = true;
-            //Log.v("Right?", isRight() + "");
-            //for (int i = 0; i < Count.length; i++)
-                //Log.v("C", Count[i] + "");
             return;
         }
 
@@ -163,10 +129,7 @@ public class MainActivity extends ActionBarActivity {
         int sum = 0;
         for (int i = 0; i < Count.length; i++)
             sum += Count[i] * Price[i];
-        //Log.v("Count", Count.toString());
-        if (sum == AP)
-            return true;
-        else
-            return false;
+
+        return sum == AP;
     }
 }
