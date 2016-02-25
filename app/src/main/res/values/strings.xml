@@ -2,7 +2,21 @@
 <resources>
 
     <string name="app_name">ExactAP</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="current_ap">Current AP</string>
+    <string name="target_ap">Target AP</string>
+
+    <string name="ap_multiply">"%1$sAP x %2$s"</string>
+    <string name="zero">0</string>
+
+    <string name="multi_cf">DoubleCF</string>
+    <string name="control_field">CF</string>
+    <string name="recharge">Recharge</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="hack">Hack</string>
+    <string name="deploy">Deploy</string>
+    <string name="link">Link</string>
+    <string name="complete">Complete</string>
+    <string name="capture">Capture</string>
 
 </resources>

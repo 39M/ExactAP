@@ -8,247 +8,277 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/labelGiveMe"
-        android:layout_width="wrap_content"
+    <!--<TextView-->
+    <!--android:id="@+id/labelGiveMe"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:text="Hey 39M, I want"-->
+    <!--android:textSize="36sp" />-->
+
+    <LinearLayout
+        android:id="@+id/empty_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/current_ap_input_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Hey 39M, I want"
-        android:textSize="36sp" />
+        android:layout_marginEnd="@dimen/text_right_margin"
+        android:layout_marginLeft="@dimen/text_left_margin"
+        android:layout_marginRight="@dimen/text_right_margin"
+        android:layout_marginStart="@dimen/text_left_margin"
+        android:layout_marginTop="15dp">
 
-    <EditText
-        android:id="@+id/editAP"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/current_ap_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:hint="@string/current_ap"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            android:maxLength="9"
+            android:text=""
+            android:textSize="32sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/target_ap_input_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/current_ap_input_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
-        android:digits="0123456789"
-        android:imeOptions="actionDone"
-        android:inputType="numberDecimal"
-        android:maxLength="9"
-        android:text=""
-        android:textSize="40sp" />
+        android:layout_marginEnd="@dimen/text_right_margin"
+        android:layout_marginLeft="@dimen/text_left_margin"
+        android:layout_marginRight="@dimen/text_right_margin"
+        android:layout_marginStart="@dimen/text_left_margin">
+
+        <EditText
+            android:id="@+id/target_ap_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:hint="@string/target_ap"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:maxLength="9"
+            android:text=""
+            android:textSize="32sp" />
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
-        android:id="@+id/labelAP"
+        android:id="@+id/multi_cf_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/editAP"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_toEndOf="@id/editAP"
-        android:layout_toRightOf="@+id/editAP"
-        android:text="AP"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/labelMultiCF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editAP"
+        android:layout_below="@+id/target_ap_input_layout"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="25dp"
-        android:text="MultiCF"
+        android:text="@string/multi_cf"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countMultiCF"
+        android:id="@+id/multi_cf_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelMultiCF"
+        android:layout_alignTop="@+id/multi_cf_label"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/labelCF"
+        android:id="@+id/cf_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelMultiCF"
+        android:layout_below="@+id/multi_cf_label"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
-        android:text="CF"
+        android:text="@string/control_field"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countCF"
+        android:id="@+id/cf_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelCF"
+        android:layout_alignTop="@+id/cf_label"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/labelCapture"
+        android:id="@+id/capture_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelCF"
+        android:layout_below="@+id/cf_label"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
-        android:text="Capture"
+        android:text="@string/capture"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countCapture"
+        android:id="@+id/capture_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelCapture"
+        android:layout_alignTop="@+id/capture_label"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/labelComplete"
+        android:id="@+id/complete_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelCapture"
+        android:layout_below="@+id/capture_label"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
-        android:text="Complete"
+        android:text="@string/complete"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countComplete"
+        android:id="@+id/complete_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelComplete"
+        android:layout_alignTop="@+id/complete_label"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/labelLink"
+        android:id="@+id/link_lable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelComplete"
+        android:layout_below="@+id/complete_label"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
-        android:text="Link"
+        android:text="@string/link"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countLink"
+        android:id="@+id/link_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelLink"
+        android:layout_alignTop="@+id/link_lable"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/labelResMod"
+        android:id="@+id/deploy_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelLink"
+        android:layout_below="@+id/link_lable"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
-        android:text="Res|Mod"
+        android:text="@string/deploy"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countResMod"
+        android:id="@+id/deploy_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelResMod"
+        android:layout_alignTop="@+id/deploy_label"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/labelHack"
+        android:id="@+id/hack_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelResMod"
+        android:layout_below="@+id/deploy_label"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
-        android:text="Hack"
+        android:text="@string/hack"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countHack"
+        android:id="@+id/hack_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelHack"
+        android:layout_alignTop="@+id/hack_label"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/labelUpgrade"
+        android:id="@+id/upgrade_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelHack"
+        android:layout_below="@+id/hack_label"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
-        android:text="Upgrade"
+        android:text="@string/upgrade"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countUpgrade"
+        android:id="@+id/upgrade_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelUpgrade"
+        android:layout_alignTop="@+id/upgrade_label"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/labelRecharge"
+        android:id="@+id/recharge_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelUpgrade"
+        android:layout_below="@+id/upgrade_label"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
-        android:text="Recharge"
+        android:text="@string/recharge"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/countRecharge"
+        android:id="@+id/recharge_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/labelRecharge"
+        android:layout_alignTop="@+id/recharge_label"
         android:layout_marginEnd="45dp"
         android:layout_marginRight="45dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textSize="20sp" />
 
 </RelativeLayout>
