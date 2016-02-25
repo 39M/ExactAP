@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "21.1.2"
     defaultConfig {
-        applicationId 'com.39m.exactap'
+        applicationId 'com.m39.exactap'
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1

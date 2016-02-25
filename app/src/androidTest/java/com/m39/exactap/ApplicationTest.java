@@ -1,4 +1,4 @@
-package com.nil.exactap;
+package com.m39.exactap;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

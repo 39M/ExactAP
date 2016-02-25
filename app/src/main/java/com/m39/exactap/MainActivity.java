@@ -1,4 +1,4 @@
-package com.nil.exactap;
+package com.m39.exactap;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
