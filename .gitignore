@@ -74,6 +74,7 @@ $RECYCLE.BIN/
 
 # Android Studio
 .idea/workspace.xml
+.idea/libraries/
 
 # Android Studio Navigation editor temp files
 .navigation/
