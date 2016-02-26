@@ -6,7 +6,7 @@
     <string name="current_ap">Current AP</string>
     <string name="target_ap">Target AP</string>
 
-    <string name="ap_multiply">"%1$sAP x %2$s"</string>
+    <string name="ap_multiply">"x %1$s"</string>
     <string name="zero">0</string>
 
     <string name="multi_cf">DoubleCF</string>
@@ -18,5 +18,8 @@
     <string name="link">Link</string>
     <string name="complete">Complete</string>
     <string name="capture">Capture</string>
+    <string name="lock">Lock</string>
+    <string name="unlock">Unlock</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
