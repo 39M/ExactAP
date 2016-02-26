@@ -3,7 +3,8 @@
 
     <string name="app_name">ExactAP</string>
 
-    <string name="help_info">试着点击操作名称和数字！</string>
+    <string name="help_info1">试着点击操作名称和数字！</string>
+    <string name="help_info2">长按数字来标记操作完成!</string>
 
     <string name="current_ap">当前AP</string>
     <string name="target_ap">目标AP</string>
@@ -35,8 +36,9 @@
     <string name="cancel">取消</string>
 
     <string name="op_tips">%1$s来获得 %2$d AP</string>
-    <string name="tip_multilayer">做一个多重</string>
-    <string name="tip_control_field">建立一个领域</string>
+    <string name="op_consumed">成功%1$s，获得 %2$d AP!</string>
+    <string name="tip_multilayer">完成一个多重</string>
+    <string name="tip_control_field">完成一个领域</string>
     <string name="tip_capture">占领一个Portal</string>
     <string name="tip_complete">放置第八个Resonator</string>
     <string name="tip_link">建立一条连接</string>
@@ -45,12 +47,23 @@
     <string name="tip_upgrade">升级一个Resonator</string>
     <string name="tip_recharge">充一次电</string>
 
+    <string-array name="operation_tips">
+        <item>完成一个多重</item>
+        <item>完成一个领域</item>
+        <item>占领一个Portal</item>
+        <item>放置第八个Resonator</item>
+        <item>建立一条连接</item>
+        <item>放置一个Resonator或者Mod</item>
+        <item>入侵一次敌军的Portal</item>
+        <item>升级一个Resonator</item>
+        <item>充一次电</item>
+    </string-array>
+
     <string name="secret_tip_39">39不可达，但是你可以看看这个：\nhttps://github.com/39M/ExactAP\n39, thank you!</string>
     <string name="secret_tip_42">39 + 9 / 3\n生命、宇宙与万事万物的终极解答</string>
     <string name="secret_tip_75" translatable="false">获得75 AP的另一种方式是摧毁一个Resonator</string>
     <string name="secret_tip_105">你一定是个安卓用户</string>
     <string name="secret_tip_500">何不去氪一个Beacon或者Portal Fracker？</string>
-    <string name="secret_tip_608">你发现了一个作弊者</string>
     <string name="secret_tip_831">お誕生日おめでとう！</string>
     <string name="secret_tip_1000">想要1000 AP？\n但是Portal已经不能再申请了</string>
 

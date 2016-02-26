@@ -18,6 +18,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 // TODO: Layout fix
@@ -35,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     private int ap_difference;
     private String[] op_names;
+    private String[] op_tips;
     private int[] ap_obtains = new int[]{2813, 1563, 625, 375, 313, 125, 100, 65, 10};
     private int[] op_counters = new int[op_num];
     private boolean[] op_lock = new boolean[op_num];
+
+    private boolean have_solution = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +62,37 @@ public class MainActivity extends AppCompatActivity {
         count_views[7] = (TextView) findViewById(R.id.upgrade_count_label);
         count_views[8] = (TextView) findViewById(R.id.recharge_count_label);
 
+        for (int i = 0; i < op_num; i++) {
+            count_views[i].setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    // get view id
+                    int view_index = get_view_index(view);
+                    if (view_index == -1) {
+                        // TODO: Remove line below before final build
+                        Log.w("View not found", "View ID: " + view.getId());
+                        return true;
+                    }
+
+                    if (have_solution && op_counters[view_index] > 0) {
+                        op_counters[view_index]--;
+                        current_ap_text.setText(String.valueOf(Integer.parseInt(current_ap_text.getText().toString()) + ap_obtains[view_index]));
+                        update_solution();
+                        Toast.makeText(MainActivity.this, String.format(getString(R.string.op_consumed),
+                                op_tips[view_index], ap_obtains[view_index]), Toast.LENGTH_SHORT).show();
+                    }
+
+                    return true;
+                }
+            });
+        }
         // get drawable
         lock_icon = ContextCompat.getDrawable(this, R.drawable.ic_lock);
         lock_icon.setBounds(0, 0, lock_icon.getMinimumWidth(), lock_icon.getMinimumHeight());
 
-        // get op names
+        // get op names and tips
         op_names = getResources().getStringArray(R.array.operation_names);
+        op_tips = getResources().getStringArray(R.array.operation_tips);
 
         // init UI
         fill_counters_to(-1);
@@ -100,7 +129,10 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // Tips
-        Toast.makeText(this, R.string.help_info, Toast.LENGTH_LONG).show();
+        if ((new Random()).nextFloat() < 0.75)
+            Toast.makeText(this, R.string.help_info1, Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this, R.string.help_info2, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -120,77 +152,10 @@ public class MainActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    private void set_text() {
-        for (int i = 0; i < op_num; i++) {
-            // set text to counter value or '?'
-            count_views[i].setText(String.format(getString(R.string.ap_multiply), op_counters[i] != -1 ? op_counters[i] + "" : "?"));
-
-            if (!op_lock[i])
-                // remove lock drawable
-                count_views[i].setCompoundDrawables(null, null, null, null);
-            else
-                // set lock drawable
-                count_views[i].setCompoundDrawables(null, null, lock_icon, null);
-        }
-
-    }
-
-    // TODO: show tips when tap operation name
-    public void show_tips(final View view) {
-        int index;
-        String tip;
-        switch (view.getId()) {
-            case R.id.multi_cf_label:
-                index = 0;
-                tip = getString(R.string.tip_multilayer);
-                break;
-            case R.id.cf_label:
-                index = 1;
-                tip = getString(R.string.tip_control_field);
-                break;
-            case R.id.capture_label:
-                index = 2;
-                tip = getString(R.string.tip_capture);
-                break;
-            case R.id.complete_label:
-                index = 3;
-                tip = getString(R.string.tip_complete);
-                break;
-            case R.id.link_lable:
-                index = 4;
-                tip = getString(R.string.tip_link);
-                break;
-            case R.id.deploy_label:
-                index = 5;
-                tip = getString(R.string.tip_deploy);
-                break;
-            case R.id.hack_label:
-                index = 6;
-                tip = getString(R.string.tip_hack);
-                break;
-            case R.id.upgrade_label:
-                index = 7;
-                tip = getString(R.string.tip_upgrade);
-                break;
-            case R.id.recharge_label:
-                index = 8;
-                tip = getString(R.string.tip_recharge);
-                break;
-            default:
-                return;
-        }
-
-        Toast.makeText(this, String.format(getString(R.string.op_tips), tip, ap_obtains[index]), Toast.LENGTH_SHORT).show();
-    }
-
     public void pick_number(final View view) {
         // get view id
-        final AtomicInteger view_index = new AtomicInteger(-1);
-        for (int i = 0; i < op_num; i++)
-            if (count_views[i].getId() == view.getId()) {
-                view_index.set(i);
-                break;
-            }
+        final AtomicInteger view_index = new AtomicInteger(get_view_index(view));
+
         if (view_index.get() == -1) {
             // TODO: Remove line below before final build
             Log.w("View not found", "View ID: " + view.getId());
@@ -261,45 +226,56 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    // update solution and UI
-    private void update_solution() {
-        // empty input, reset counters
-        if (current_ap_text.getText().toString().length() < 1 || target_ap_text.getText().toString().length() < 1) {
-            ap_difference = 0;
-            fill_counters_to(-1);
-            set_text();
-            return;
+    public void show_tips(final View view) {
+        int index;
+        String tip;
+        switch (view.getId()) {
+            case R.id.multi_cf_label:
+                index = 0;
+                tip = getString(R.string.tip_multilayer);
+                break;
+            case R.id.cf_label:
+                index = 1;
+                tip = getString(R.string.tip_control_field);
+                break;
+            case R.id.capture_label:
+                index = 2;
+                tip = getString(R.string.tip_capture);
+                break;
+            case R.id.complete_label:
+                index = 3;
+                tip = getString(R.string.tip_complete);
+                break;
+            case R.id.link_lable:
+                index = 4;
+                tip = getString(R.string.tip_link);
+                break;
+            case R.id.deploy_label:
+                index = 5;
+                tip = getString(R.string.tip_deploy);
+                break;
+            case R.id.hack_label:
+                index = 6;
+                tip = getString(R.string.tip_hack);
+                break;
+            case R.id.upgrade_label:
+                index = 7;
+                tip = getString(R.string.tip_upgrade);
+                break;
+            case R.id.recharge_label:
+                index = 8;
+                tip = getString(R.string.tip_recharge);
+                break;
+            default:
+                return;
         }
 
-        // get ap difference
-        ap_difference = Integer.parseInt(target_ap_text.getText().toString()) -
-                Integer.parseInt(current_ap_text.getText().toString());
-        // !@#$%^&*()_+
-        show_secret_tips(ap_difference);
-        // reset conters
-        fill_counters_to(0);
-        // get ap differece left after substract locked operations
-        int ap_left = ap_difference;
-        for (int i = 0; i < op_num; i++)
-            if (op_lock[i])
-                ap_left -= op_counters[i] * ap_obtains[i];
-        // try to get a solution
-        if (ap_left < 0 || !search_solution(ap_left, 0)) {
-            // if faild, set counters to -1
-            fill_counters_to(-1);
-        }
-        /*TODO: Remove this part before final build*/
-        else if (!is_right_answer())
-            Log.w("Warning", "Wrong answer");
-        /*TODO: Remove this part before final build*/
-
-        // update UI
-        set_text();
+        Toast.makeText(this, String.format(getString(R.string.op_tips), tip, ap_obtains[index]), Toast.LENGTH_SHORT).show();
     }
 
-    private void show_secret_tips(int ap)    {
+    private void show_secret_tips(int ap) {
         String tip;
-        switch (ap){
+        switch (ap) {
             case 39:
                 tip = getString(R.string.secret_tip_39);
                 break;
@@ -342,6 +318,62 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, tip, Toast.LENGTH_LONG).show();
     }
 
+    private void set_text() {
+        for (int i = 0; i < op_num; i++) {
+            // set text to counter value or '?'
+            count_views[i].setText(String.format(getString(R.string.ap_multiply), op_counters[i] != -1 ? op_counters[i] + "" : "?"));
+
+            if (!op_lock[i])
+                // remove lock drawable
+                count_views[i].setCompoundDrawables(null, null, null, null);
+            else
+                // set lock drawable
+                count_views[i].setCompoundDrawables(null, null, lock_icon, null);
+        }
+
+    }
+
+    // update solution and UI
+    private void update_solution() {
+        // reset flag
+        have_solution = false;
+
+        // empty input, reset counters
+        if (current_ap_text.getText().toString().length() < 1 || target_ap_text.getText().toString().length() < 1) {
+            ap_difference = 0;
+            fill_counters_to(-1);
+            set_text();
+            return;
+        }
+
+        // get ap difference
+        ap_difference = Integer.parseInt(target_ap_text.getText().toString()) -
+                Integer.parseInt(current_ap_text.getText().toString());
+        // !@#$%^&*()_+
+        show_secret_tips(ap_difference);
+        // reset conters
+        fill_counters_to(0);
+        // get ap differece left after substract locked operations
+        int ap_left = ap_difference;
+        for (int i = 0; i < op_num; i++)
+            if (op_lock[i])
+                ap_left -= op_counters[i] * ap_obtains[i];
+        // try to get a solution
+        if (ap_left < 0 || !search_solution(ap_left, 0)) {
+            // if faild, set counters to -1
+            fill_counters_to(-1);
+        }
+        /*TODO: Remove this part before final build*/
+        else if (!is_right_answer())
+            Log.w("Warning", "Wrong answer");
+        /*TODO: Remove this part before final build*/
+
+        have_solution = true;
+
+        // update UI
+        set_text();
+    }
+
     // search for solution
     private boolean search_solution(int ap_left, int op_index) {
         // got solution, return
@@ -365,6 +397,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private int get_view_index(View view) {
+        int view_index = -1;
+        for (int i = 0; i < op_num; i++)
+            if (count_views[i].getId() == view.getId()) {
+                view_index = i;
+                break;
+            }
+        return view_index;
     }
 
     // assign all unlocked counters with x

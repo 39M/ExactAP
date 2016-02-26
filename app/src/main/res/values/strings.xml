@@ -3,7 +3,8 @@
 
     <string name="app_name">ExactAP</string>
 
-    <string name="help_info">Try to tap the operation name and number!</string>
+    <string name="help_info1">Try to tap the operation name and number!</string>
+    <string name="help_info2">Long press the numbers to mark you did once!</string>
 
     <string name="current_ap">Current AP</string>
     <string name="target_ap">Target AP</string>
@@ -38,8 +39,9 @@
     <string name="cancel">Cancel</string>
 
     <string name="op_tips">%1$s to get %2$d AP</string>
-    <string name="tip_multilayer">Make a multi-layer</string>
-    <string name="tip_control_field">Make one field</string>
+    <string name="op_consumed">Success to %1$s, got %2$d AP!</string>
+    <string name="tip_multilayer">Complete a multi-layer</string>
+    <string name="tip_control_field">Create one field</string>
     <string name="tip_capture">Capture a portal</string>
     <string name="tip_complete">Place the eighth resonator</string>
     <string name="tip_link">Create a link</string>
@@ -48,12 +50,24 @@
     <string name="tip_upgrade">Upgrade a resonator</string>
     <string name="tip_recharge">Recharge once</string>
 
+    <string-array name="operation_tips">
+        <item>Complete a multi-layer</item>
+        <item>Create one field</item>
+        <item>Capture a portal</item>
+        <item>Place the eighth resonator</item>
+        <item>Create a link</item>
+        <item>Deploy a resonator or a mod</item>
+        <item>Hack an enemy portal</item>
+        <item>Upgrade a resonator</item>
+        <item>Recharge once</item>
+    </string-array>
+
     <string name="secret_tip_39">39 is not reachable, but you can take a look at this:\nhttps://github.com/39M/ExactAP\n39, thank you!</string>
     <string name="secret_tip_42">39 + 9 / 3\nthe answer to life the universe and everything</string>
     <string name="secret_tip_75">Another way to gain 75 AP is destroy a resonator</string>
     <string name="secret_tip_105">You must be an Android user</string>
     <string name="secret_tip_500">Why not buy a beacon or portal fracker?</string>
-    <string name="secret_tip_608">You found a cheater</string>
+    <string name="secret_tip_608" translatable="false">attack608</string>
     <string name="secret_tip_777" translatable="false">chmod 777, +7 all right reserved</string>
     <string name="secret_tip_831">Happy Birthday!</string>
     <string name="secret_tip_1000">Want 1000 AP?\nBut new portal submission is no longer available</string>
