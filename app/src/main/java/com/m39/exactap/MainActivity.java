@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -33,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Drawable lock_icon;
 
     private int ap_difference;
-    private String[] op_names = new String[]{
-            "Double Control Field", "Control Field", "Capture", "Complete", "Link", "Deploy", "Hack", "Upgrade", "Recharge"
-    };
+    private String[] op_names;
     private int[] ap_obtains = new int[]{2813, 1563, 625, 375, 313, 125, 100, 65, 10};
     private int[] op_counters = new int[op_num];
     private boolean[] op_lock = new boolean[op_num];
@@ -62,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         // get drawable
         lock_icon = ContextCompat.getDrawable(this, R.drawable.ic_lock);
         lock_icon.setBounds(0, 0, lock_icon.getMinimumWidth(), lock_icon.getMinimumHeight());
+
+        // get op names
+        op_names = getResources().getStringArray(R.array.operation_names);
 
         // init UI
         fill_counters_to(-1);
@@ -96,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
 //                return false;
 //            }
 //        });
+
+        // Tips
+        Toast.makeText(this, R.string.help_info, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -132,7 +137,50 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO: show tips when tap operation name
     public void show_tips(final View view) {
+        int index;
+        String tip;
+        switch (view.getId()) {
+            case R.id.multi_cf_label:
+                index = 0;
+                tip = getString(R.string.tip_multilayer);
+                break;
+            case R.id.cf_label:
+                index = 1;
+                tip = getString(R.string.tip_control_field);
+                break;
+            case R.id.capture_label:
+                index = 2;
+                tip = getString(R.string.tip_capture);
+                break;
+            case R.id.complete_label:
+                index = 3;
+                tip = getString(R.string.tip_complete);
+                break;
+            case R.id.link_lable:
+                index = 4;
+                tip = getString(R.string.tip_link);
+                break;
+            case R.id.deploy_label:
+                index = 5;
+                tip = getString(R.string.tip_deploy);
+                break;
+            case R.id.hack_label:
+                index = 6;
+                tip = getString(R.string.tip_hack);
+                break;
+            case R.id.upgrade_label:
+                index = 7;
+                tip = getString(R.string.tip_upgrade);
+                break;
+            case R.id.recharge_label:
+                index = 8;
+                tip = getString(R.string.tip_recharge);
+                break;
+            default:
+                return;
+        }
 
+        Toast.makeText(this, String.format(getString(R.string.op_tips), tip, ap_obtains[index]), Toast.LENGTH_SHORT).show();
     }
 
     public void pick_number(final View view) {
@@ -215,8 +263,6 @@ public class MainActivity extends AppCompatActivity {
 
     // update solution and UI
     private void update_solution() {
-        Log.v("Height:", count_views[0].getHeight()+"");
-
         // empty input, reset counters
         if (current_ap_text.getText().toString().length() < 1 || target_ap_text.getText().toString().length() < 1) {
             ap_difference = 0;
@@ -228,6 +274,8 @@ public class MainActivity extends AppCompatActivity {
         // get ap difference
         ap_difference = Integer.parseInt(target_ap_text.getText().toString()) -
                 Integer.parseInt(current_ap_text.getText().toString());
+        // !@#$%^&*()_+
+        show_secret_tips(ap_difference);
         // reset conters
         fill_counters_to(0);
         // get ap differece left after substract locked operations
@@ -247,6 +295,51 @@ public class MainActivity extends AppCompatActivity {
 
         // update UI
         set_text();
+    }
+
+    private void show_secret_tips(int ap)    {
+        String tip;
+        switch (ap){
+            case 39:
+                tip = getString(R.string.secret_tip_39);
+                break;
+            case 42:
+                tip = getString(R.string.secret_tip_42);
+                break;
+            case 75:
+                tip = getString(R.string.secret_tip_75);
+                break;
+            case 105:
+                tip = getString(R.string.secret_tip_105);
+                break;
+            case 500:
+                tip = getString(R.string.secret_tip_500);
+                break;
+            case 608:
+                tip = getString(R.string.secret_tip_608);
+                break;
+            case 777:
+                tip = getString(R.string.secret_tip_777);
+                break;
+            case 831:
+                tip = getString(R.string.secret_tip_831);
+                break;
+            case 1000:
+                tip = getString(R.string.secret_tip_1000);
+                break;
+            case 1024:
+                tip = getString(R.string.secret_tip_1024);
+                break;
+            case 2333:
+                tip = getString(R.string.secret_tip_2333);
+                break;
+            case 65536:
+                tip = getString(R.string.secret_tip_65536);
+                break;
+            default:
+                return;
+        }
+        Toast.makeText(this, tip, Toast.LENGTH_LONG).show();
     }
 
     // search for solution

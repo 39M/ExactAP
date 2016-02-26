@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ExactAP</string>
+
+    <string name="help_info">试着点击操作名称和数字！</string>
+
+    <string name="current_ap">当前AP</string>
+    <string name="target_ap">目标AP</string>
+
+    <string name="multi_cf">多重</string>
+    <string name="control_field">领域</string>
+    <string name="capture">占领</string>
+    <string name="complete">完成</string>
+    <string name="link">连接</string>
+    <string name="deploy">放置</string>
+    <string name="hack">入侵</string>
+    <string name="upgrade">升级</string>
+    <string name="recharge">充电</string>
+
+    <string-array name="operation_names">
+        <item>多重</item>
+        <item>领域</item>
+        <item>占领</item>
+        <item>完成</item>
+        <item>连接</item>
+        <item>放置</item>
+        <item>入侵</item>
+        <item>升级</item>
+        <item>充电</item>
+    </string-array>
+
+    <string name="lock">锁定</string>
+    <string name="unlock">解锁</string>
+    <string name="cancel">取消</string>
+
+    <string name="op_tips">%1$s来获得 %2$d AP</string>
+    <string name="tip_multilayer">做一个多重</string>
+    <string name="tip_control_field">建立一个领域</string>
+    <string name="tip_capture">占领一个Portal</string>
+    <string name="tip_complete">放置第八个Resonator</string>
+    <string name="tip_link">建立一条连接</string>
+    <string name="tip_deploy">放置一个Resonator或者Mod</string>
+    <string name="tip_hack">入侵一次敌军的Portal</string>
+    <string name="tip_upgrade">升级一个Resonator</string>
+    <string name="tip_recharge">充一次电</string>
+
+    <string name="secret_tip_39">39不可达，但是你可以看看这个：\nhttps://github.com/39M/ExactAP\n39, thank you!</string>
+    <string name="secret_tip_42">39 + 9 / 3\n生命、宇宙与万事万物的终极解答</string>
+    <string name="secret_tip_75" translatable="false">获得75 AP的另一种方式是摧毁一个Resonator</string>
+    <string name="secret_tip_105">你一定是个安卓用户</string>
+    <string name="secret_tip_500">何不去氪一个Beacon或者Portal Fracker？</string>
+    <string name="secret_tip_608">你发现了一个作弊者</string>
+    <string name="secret_tip_831">お誕生日おめでとう！</string>
+    <string name="secret_tip_1000">想要1000 AP？\n但是Portal已经不能再申请了</string>
+
+</resources>

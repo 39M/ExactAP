@@ -3,23 +3,62 @@
 
     <string name="app_name">ExactAP</string>
 
+    <string name="help_info">Try to tap the operation name and number!</string>
+
     <string name="current_ap">Current AP</string>
     <string name="target_ap">Target AP</string>
 
-    <string name="ap_multiply">"x %1$s"</string>
-    <string name="multiply_zero">x 0</string>
+    <string name="ap_multiply" translatable="false">"x %1$s"</string>
+    <string name="multiply_zero" translatable="false">x 0</string>
 
     <string name="multi_cf">Multi-layer</string>
     <string name="control_field">Control Field</string>
-    <string name="recharge">Recharge</string>
-    <string name="upgrade">Upgrade</string>
-    <string name="hack">Hack</string>
-    <string name="deploy">Deploy</string>
-    <string name="link">Link</string>
-    <string name="complete">Complete</string>
     <string name="capture">Capture</string>
+    <string name="complete">Complete</string>
+    <string name="link">Link</string>
+    <string name="deploy">Deploy</string>
+    <string name="hack">Hack</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="recharge">Recharge</string>
+
+    <string-array name="operation_names">
+        <item>Multi-layer</item>
+        <item>Control Field</item>
+        <item>Capture</item>
+        <item>Complete</item>
+        <item>Link</item>
+        <item>Deploy</item>
+        <item>Hack</item>
+        <item>Upgrade</item>
+        <item>Recharge</item>
+    </string-array>
+
     <string name="lock">Lock</string>
     <string name="unlock">Unlock</string>
     <string name="cancel">Cancel</string>
+
+    <string name="op_tips">%1$s to get %2$d AP</string>
+    <string name="tip_multilayer">Make a multi-layer</string>
+    <string name="tip_control_field">Make one field</string>
+    <string name="tip_capture">Capture a portal</string>
+    <string name="tip_complete">Place the eighth resonator</string>
+    <string name="tip_link">Create a link</string>
+    <string name="tip_deploy">Deploy a resonator or a mod</string>
+    <string name="tip_hack">Hack an enemy portal</string>
+    <string name="tip_upgrade">Upgrade a resonator</string>
+    <string name="tip_recharge">Recharge once</string>
+
+    <string name="secret_tip_39">39 is not reachable, but you can take a look at this:\nhttps://github.com/39M/ExactAP\n39, thank you!</string>
+    <string name="secret_tip_42">39 + 9 / 3\nthe answer to life the universe and everything</string>
+    <string name="secret_tip_75">Another way to gain 75 AP is destroy a resonator</string>
+    <string name="secret_tip_105">You must be an Android user</string>
+    <string name="secret_tip_500">Why not buy a beacon or portal fracker?</string>
+    <string name="secret_tip_608">You found a cheater</string>
+    <string name="secret_tip_777" translatable="false">chmod 777, +7 all right reserved</string>
+    <string name="secret_tip_831">Happy Birthday!</string>
+    <string name="secret_tip_1000">Want 1000 AP?\nBut new portal submission is no longer available</string>
+    <string name="secret_tip_1024" translatable="false">2^10</string>
+    <string name="secret_tip_2333" translatable="false">2334, 2335, 2336, 2333333</string>
+    <string name="secret_tip_65536" translatable="false">short int</string>
 
 </resources>
