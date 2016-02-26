@@ -215,6 +215,8 @@ public class MainActivity extends AppCompatActivity {
 
     // update solution and UI
     private void update_solution() {
+        Log.v("Height:", count_views[0].getHeight()+"");
+
         // empty input, reset counters
         if (current_ap_text.getText().toString().length() < 1 || target_ap_text.getText().toString().length() < 1) {
             ap_difference = 0;
