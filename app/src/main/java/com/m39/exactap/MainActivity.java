@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         if (view_index.get() == -1) {
+            // TODO: Remove line below before final build
             Log.w("View not found", "View ID: " + view.getId());
             return;
         }
@@ -156,7 +157,8 @@ public class MainActivity extends AppCompatActivity {
         // picker setup
         final NumberPicker picker = (NumberPicker) dialog.findViewById(R.id.number_picker);
         picker.setMinValue(0);
-        picker.setMaxValue(ap_difference / ap_obtains[view_index.get()]);
+        // prevent max value < min value
+        picker.setMaxValue(ap_difference > 0 ? ap_difference / ap_obtains[view_index.get()] : 0);
         picker.setValue(op_counters[view_index.get()] != -1 ? op_counters[view_index.get()] : 0);
 //        picker.setWrapSelectorWheel(false);
 //        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
