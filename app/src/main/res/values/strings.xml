@@ -7,10 +7,10 @@
     <string name="target_ap">Target AP</string>
 
     <string name="ap_multiply">"x %1$s"</string>
-    <string name="zero">0</string>
+    <string name="multiply_zero">x 0</string>
 
-    <string name="multi_cf">DoubleCF</string>
-    <string name="control_field">CF</string>
+    <string name="multi_cf">Multi-layer</string>
+    <string name="control_field">Control Field</string>
     <string name="recharge">Recharge</string>
     <string name="upgrade">Upgrade</string>
     <string name="hack">Hack</string>

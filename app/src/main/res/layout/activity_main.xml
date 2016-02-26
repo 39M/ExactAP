@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/text_right_margin"
-        android:layout_marginLeft="@dimen/text_left_margin"
-        android:layout_marginRight="@dimen/text_right_margin"
-        android:layout_marginStart="@dimen/text_left_margin"
-        android:layout_marginTop="15dp">
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin">
 
         <EditText
             android:id="@+id/current_ap_input"
@@ -39,10 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/current_ap_input_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/text_right_margin"
-        android:layout_marginLeft="@dimen/text_left_margin"
-        android:layout_marginRight="@dimen/text_right_margin"
-        android:layout_marginStart="@dimen/text_left_margin">
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin">
 
         <EditText
             android:id="@+id/target_ap_input"
@@ -62,9 +62,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/target_ap_input_layout"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/between_input_and_text"
         android:text="@string/multi_cf"
         android:textSize="20sp" />
 
@@ -75,10 +75,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/multi_cf_label"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
     <TextView
@@ -86,9 +87,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/multi_cf_label"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/text_vertical_margin"
         android:text="@string/control_field"
         android:textSize="20sp" />
 
@@ -99,10 +100,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/cf_label"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
     <TextView
@@ -110,9 +113,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cf_label"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/text_vertical_margin"
         android:text="@string/capture"
         android:textSize="20sp" />
 
@@ -123,10 +126,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/capture_label"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
     <TextView
@@ -134,9 +138,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/capture_label"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/text_vertical_margin"
         android:text="@string/complete"
         android:textSize="20sp" />
 
@@ -147,10 +151,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/complete_label"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
     <TextView
@@ -158,9 +164,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/complete_label"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/text_vertical_margin"
         android:text="@string/link"
         android:textSize="20sp" />
 
@@ -171,10 +177,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/link_lable"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
     <TextView
@@ -182,9 +190,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/link_lable"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/text_vertical_margin"
         android:text="@string/deploy"
         android:textSize="20sp" />
 
@@ -195,10 +203,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/deploy_label"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
     <TextView
@@ -206,9 +215,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/deploy_label"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/text_vertical_margin"
         android:text="@string/hack"
         android:textSize="20sp" />
 
@@ -219,10 +228,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/hack_label"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
     <TextView
@@ -230,9 +240,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hack_label"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/text_vertical_margin"
         android:text="@string/upgrade"
         android:textSize="20sp" />
 
@@ -243,10 +253,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/upgrade_label"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
     <TextView
@@ -254,9 +266,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/upgrade_label"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/text_horizontal_margin"
+        android:layout_marginStart="@dimen/text_horizontal_margin"
+        android:layout_marginTop="@dimen/text_vertical_margin"
         android:text="@string/recharge"
         android:textSize="20sp" />
 
@@ -267,10 +279,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/recharge_label"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="@dimen/text_horizontal_margin"
+        android:layout_marginRight="@dimen/text_horizontal_margin"
+        android:gravity="center_vertical"
         android:onClick="pick_number"
-        android:text="@string/zero"
+        android:text="@string/multiply_zero"
         android:textSize="20sp" />
 
 </RelativeLayout>
