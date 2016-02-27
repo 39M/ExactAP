@@ -4,7 +4,7 @@
     <string name="app_name">ExactAP</string>
 
     <string name="help_info1">Try to tap the operation name and number!</string>
-    <string name="help_info2">Long press the numbers to mark you did once!</string>
+    <string name="help_info2">Long press the numbers to mark you did it once!</string>
 
     <string name="current_ap">Current AP</string>
     <string name="target_ap">Target AP</string>
@@ -62,10 +62,12 @@
         <item>Recharge once</item>
     </string-array>
 
-    <string name="secret_tip_39">39 is not reachable, but you can take a look at this:\nhttps://github.com/39M/ExactAP\n39, thank you!</string>
+    <string name="secret_tip_39">39, Thank you\nYou can\'t get 39, but you can take a look at this:\nhttps://github.com/39M/ExactAP</string>
     <string name="secret_tip_42">39 + 9 / 3\nthe answer to life the universe and everything</string>
     <string name="secret_tip_75">Another way to gain 75 AP is destroy a resonator</string>
     <string name="secret_tip_105">You must be an Android user</string>
+    <string name="secret_tip_137" translatable="false">He is nameless</string>
+    <string name="secret_tip_222">bender is far higher than all of you</string>
     <string name="secret_tip_500">Why not buy a beacon or portal fracker?</string>
     <string name="secret_tip_608" translatable="false">attack608</string>
     <string name="secret_tip_777" translatable="false">chmod 777, +7 all right reserved</string>

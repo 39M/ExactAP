@@ -2,6 +2,7 @@ package com.m39.exactap;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
@@ -21,9 +22,9 @@ import android.widget.Toast;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-// TODO: Layout fix
-// TODO: More operation
+// TODO: Layout adjust
 // TODO: Beautify, list? card view?
+// TODO: Start without focus
 
 public class MainActivity extends AppCompatActivity {
     private static final int op_num = 9;
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
 
+                    // consume and show tip
                     if (have_solution && op_counters[view_index] > 0) {
                         op_counters[view_index]--;
                         current_ap_text.setText(String.valueOf(Integer.parseInt(current_ap_text.getText().toString()) + ap_obtains[view_index]));
@@ -81,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, String.format(getString(R.string.op_consumed),
                                 op_tips[view_index], ap_obtains[view_index]), Toast.LENGTH_SHORT).show();
                     }
-
                     return true;
                 }
             });
@@ -106,11 +107,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                update_solution();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                update_solution();
             }
         };
         // add text watcher for text editing
@@ -129,21 +130,10 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // Tips
-        if ((new Random()).nextFloat() < 0.75)
+        if ((new Random()).nextFloat() < 0.5f)
             Toast.makeText(this, R.string.help_info1, Toast.LENGTH_LONG).show();
         else
             Toast.makeText(this, R.string.help_info2, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -152,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
+    // pick number dialog
     public void pick_number(final View view) {
         // get view id
         final AtomicInteger view_index = new AtomicInteger(get_view_index(view));
@@ -173,13 +164,6 @@ public class MainActivity extends AppCompatActivity {
         // prevent max value < min value
         picker.setMaxValue(ap_difference > 0 ? ap_difference / ap_obtains[view_index.get()] : 0);
         picker.setValue(op_counters[view_index.get()] != -1 ? op_counters[view_index.get()] : 0);
-//        picker.setWrapSelectorWheel(false);
-//        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-//            @Override
-//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-//                Log.v(oldVal+"old", newVal+"new");
-//            }
-//        });
 
         // buttons setup
         Button lock_button = (Button) dialog.findViewById(R.id.pick_number_button);
@@ -226,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    // show operation tips
     public void show_tips(final View view) {
         int index;
         String tip;
@@ -273,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, String.format(getString(R.string.op_tips), tip, ap_obtains[index]), Toast.LENGTH_SHORT).show();
     }
 
+    // !@#$%^&*()_+
     private void show_secret_tips(int ap) {
         String tip;
         switch (ap) {
@@ -287,6 +273,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 105:
                 tip = getString(R.string.secret_tip_105);
+                break;
+            case 137:
+                tip = getString(R.string.secret_tip_137);
+                break;
+            case 222:
+                tip = getString(R.string.secret_tip_222);
                 break;
             case 500:
                 tip = getString(R.string.secret_tip_500);
@@ -318,6 +310,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, tip, Toast.LENGTH_LONG).show();
     }
 
+    // set operation count text
     private void set_text() {
         for (int i = 0; i < op_num; i++) {
             // set text to counter value or '?'
