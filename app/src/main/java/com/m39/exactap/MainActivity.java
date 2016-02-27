@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,25 +22,22 @@ import android.widget.Toast;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-// TODO: Layout adjust
-// TODO: Beautify, list? card view?
-// TODO: Start without focus
 
 public class MainActivity extends AppCompatActivity {
     private static final int op_num = 9;
 
     private EditText current_ap_text;
     private EditText target_ap_text;
-    private TextView[] count_views = new TextView[op_num];
+    private final TextView[] count_views = new TextView[op_num];
 
-    Drawable lock_icon;
+    private Drawable lock_icon;
 
     private int ap_difference;
     private String[] op_names;
     private String[] op_tips;
-    private int[] ap_obtains = new int[]{2813, 1563, 625, 375, 313, 125, 100, 65, 10};
-    private int[] op_counters = new int[op_num];
-    private boolean[] op_lock = new boolean[op_num];
+    private final int[] ap_obtains = new int[]{2813, 1563, 625, 375, 313, 125, 100, 65, 10};
+    private final int[] op_counters = new int[op_num];
+    private final boolean[] op_lock = new boolean[op_num];
 
     private boolean have_solution = false;
 
@@ -71,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
                     // get view id
                     int view_index = get_view_index(view);
                     if (view_index == -1) {
-                        // TODO: Remove line below before final build
-                        Log.w("View not found", "View ID: " + view.getId());
                         return true;
                     }
 
@@ -150,8 +144,6 @@ public class MainActivity extends AppCompatActivity {
         final AtomicInteger view_index = new AtomicInteger(get_view_index(view));
 
         if (view_index.get() == -1) {
-            // TODO: Remove line below before final build
-            Log.w("View not found", "View ID: " + view.getId());
             return;
         }
 
@@ -358,10 +350,6 @@ public class MainActivity extends AppCompatActivity {
             // if faild, set counters to -1
             fill_counters_to(-1);
         }
-        /*TODO: Remove this part before final build*/
-        else if (!is_right_answer())
-            Log.w("Warning", "Wrong answer");
-        /*TODO: Remove this part before final build*/
 
         have_solution = true;
 
@@ -404,10 +392,10 @@ public class MainActivity extends AppCompatActivity {
         return view_index;
     }
 
-    private void hide_input_method(){
+    private void hide_input_method() {
         View view = this.getCurrentFocus();
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
@@ -419,11 +407,13 @@ public class MainActivity extends AppCompatActivity {
                 op_counters[i] = x;
     }
 
-    // check answer
-    private boolean is_right_answer() {
-        int sum = 0;
-        for (int i = 0; i < op_num; i++)
-            sum += op_counters[i] * ap_obtains[i];
-        return sum == ap_difference;
-    }
+// --Commented out by Inspection START (2016/2/27 19:33):
+//    // check answer
+//    private boolean is_right_answer() {
+//        int sum = 0;
+//        for (int i = 0; i < op_num; i++)
+//            sum += op_counters[i] * ap_obtains[i];
+//        return sum == ap_difference;
+//    }
+// --Commented out by Inspection STOP (2016/2/27 19:33)
 }
