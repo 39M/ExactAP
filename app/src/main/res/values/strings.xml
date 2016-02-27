@@ -3,8 +3,8 @@
 
     <string name="app_name">ExactAP</string>
 
-    <string name="help_info1">Try to tap the operation name and number!</string>
-    <string name="help_info2">Long press the numbers to mark you did it once!</string>
+    <string name="help_info1">Tips: Try to tap the operation name and number!</string>
+    <string name="help_info2">Tips: Long press the numbers to mark you did it once!</string>
 
     <string name="current_ap">Current AP</string>
     <string name="target_ap">Target AP</string>

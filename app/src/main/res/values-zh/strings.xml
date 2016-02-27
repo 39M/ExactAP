@@ -3,8 +3,8 @@
 
     <string name="app_name">ExactAP</string>
 
-    <string name="help_info1">试着点击操作名称和数字！</string>
-    <string name="help_info2">长按数字来标记完成一次操作!</string>
+    <string name="help_info1">提示：试着点击操作名称和数字！</string>
+    <string name="help_info2">提示：长按数字来标记完成一次操作!</string>
 
     <string name="current_ap">当前AP</string>
     <string name="target_ap">目标AP</string>

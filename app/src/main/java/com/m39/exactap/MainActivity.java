@@ -1,18 +1,19 @@
 package com.m39.exactap;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -118,16 +119,24 @@ public class MainActivity extends AppCompatActivity {
         current_ap_text.addTextChangedListener(textWatcher);
         target_ap_text.addTextChangedListener(textWatcher);
 
-        // TODO: clear focus when action done
-//        target_ap_text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                    target_ap_text.clearFocus();
-//                }
-//                return false;
-//            }
-//        });
+        // clear focus when action down
+        target_ap_text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    // clear focus
+                    target_ap_text.clearFocus();
+
+                    // hide input method
+                    View view = MainActivity.this.getCurrentFocus();
+                    if (view != null) {
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
+                }
+                return false;
+            }
+        });
 
         // Tips
         if ((new Random()).nextFloat() < 0.5f)
