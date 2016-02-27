@@ -124,15 +124,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    // clear focus
                     target_ap_text.clearFocus();
-
-                    // hide input method
-                    View view = MainActivity.this.getCurrentFocus();
-                    if (view != null) {
-                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                    }
+                    hide_input_method();
                 }
                 return false;
             }
@@ -409,6 +402,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         return view_index;
+    }
+
+    private void hide_input_method(){
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     // assign all unlocked counters with x
