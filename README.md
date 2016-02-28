@@ -26,7 +26,7 @@ Make an App takes time, publish an App costs money (developer account fee).
 **ExactAP** is completely free, and is open-sourced with MIT License.  
 I'd appreciate it a lot if you are willing to donate any amount to me！  
   
-> <a href="https://cdn.rawgit.com/39M/ExactAP/tree/master/ScreenShot/Donate/Paypal.html" target="_blank">Paypal</a>  
+> <a href="https://cdn.rawgit.com/39M/ExactAP/master/ScreenShot/Donate/Paypal.html" target="_blank">Paypal</a>  
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="550111434@qq.com">
