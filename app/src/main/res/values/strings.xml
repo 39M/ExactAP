@@ -77,4 +77,7 @@
     <string name="secret_tip_2333" translatable="false">2334, 2335, 2336, 2333333</string>
     <string name="secret_tip_65536" translatable="false">short int</string>
 
+    <string name="try_too_many_times_tip1">So hard to get result!\nExactAP gave up(╯‵□′)╯︵┻━┻</string>
+    <string name="try_too_many_times_tip2">Try to unlock some operations to get solution!</string>
+
 </resources>

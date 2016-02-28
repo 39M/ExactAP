@@ -17,7 +17,7 @@
     <string name="deploy">放置</string>
     <string name="hack">入侵</string>
     <string name="upgrade">升级</string>
-    <string name="recharge">充电</string>
+    <string name="recharge">充能</string>
 
     <string-array name="operation_names">
         <item>多重</item>
@@ -67,5 +67,8 @@
     <string name="secret_tip_500">何不去氪一个Beacon或者Portal Fracker？</string>
     <string name="secret_tip_831">お誕生日おめでとう！</string>
     <string name="secret_tip_1000">想要1000 AP？\n但是已经不能再申请Portal了</string>
+
+    <string name="try_too_many_times_tip1">太难算啦！\nExactAP 表示放弃(╯‵□′)╯︵┻━┻</string>
+    <string name="try_too_many_times_tip2">试着解锁一些操作来获得凑AP方法！</string>
 
 </resources>

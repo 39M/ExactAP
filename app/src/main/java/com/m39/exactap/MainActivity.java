@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
+//import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -39,7 +41,11 @@ public class MainActivity extends AppCompatActivity {
     private final int[] op_counters = new int[op_num];
     private final boolean[] op_lock = new boolean[op_num];
 
+    private Random random = new Random();
+
     private boolean have_solution = false;
+    private static final int max_recursion_time = 100000;
+    private int recursion_times;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Tips
-        if ((new Random()).nextFloat() < 0.5f)
+        if (random.nextFloat() < 0.5f)
             Toast.makeText(this, R.string.help_info1, Toast.LENGTH_LONG).show();
         else
             Toast.makeText(this, R.string.help_info2, Toast.LENGTH_LONG).show();
@@ -346,9 +352,23 @@ public class MainActivity extends AppCompatActivity {
             if (op_lock[i])
                 ap_left -= op_counters[i] * ap_obtains[i];
         // try to get a solution
+        /*Log.v("AP Difference: ", ap_difference + "");
+        Log.v("AP Left:       ", ap_left + "");
+        Log.v("Counter Stats: ", Arrays.toString(op_counters));
+        Log.v("Lockers Stats: ", Arrays.toString(op_lock));
+        Log.w("Start", "Search");*/
+        recursion_times = 0;
         if (ap_left < 0 || !search_solution(ap_left, 0)) {
             // if faild, set counters to -1
             fill_counters_to(-1);
+
+            // show try too many times tip
+            if (recursion_times >= max_recursion_time) {
+                if (random.nextFloat() < 0.5f)
+                    Toast.makeText(this, R.string.try_too_many_times_tip1, Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(this, R.string.try_too_many_times_tip2, Toast.LENGTH_LONG).show();
+            }
         }
 
         have_solution = true;
@@ -359,8 +379,12 @@ public class MainActivity extends AppCompatActivity {
 
     // search for solution
     private boolean search_solution(int ap_left, int op_index) {
+        recursion_times++;
+
         // got solution, return
         if (ap_left == 0) {
+            /*Log.w("Got", "Solution");
+            Log.w("Time: ", recursion_times + "");*/
             return true;
         }
 
@@ -373,7 +397,7 @@ public class MainActivity extends AppCompatActivity {
         if (op_index < op_num) {
             if (op_lock[op_index])
                 return search_solution(ap_left, op_index + 1);
-            for (int i = ap_left % ap_obtains[op_index]; i <= ap_left; i += ap_obtains[op_index]) {
+            for (int i = ap_left % ap_obtains[op_index]; i <= ap_left && recursion_times < max_recursion_time; i += ap_obtains[op_index]) {
                 op_counters[op_index] = (ap_left - i) / ap_obtains[op_index];
                 if (search_solution(i, op_index + 1))
                     return true;
