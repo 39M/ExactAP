@@ -80,4 +80,7 @@
     <string name="try_too_many_times_tip1">So hard to get result!\nExactAP gave up(╯‵□′)╯︵┻━┻</string>
     <string name="try_too_many_times_tip2">Try to unlock some operations to get solution!</string>
 
+    <string name="double_ap_enabled">Double AP mode enabled!\nNotice that you can\'t get an odd number of AP in this mode.\nTry having a perfect glyph!</string>
+    <string name="double_ap_disabled">Double AP mode disabled!</string>
+
 </resources>

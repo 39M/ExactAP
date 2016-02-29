@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private final Random random = new Random();
 
     private boolean have_solution = false;
+    private boolean double_ap_mode = false;
     private static final int max_recursion_time = 100000;
     private int recursion_times;
 
@@ -310,6 +311,31 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, tip, Toast.LENGTH_LONG).show();
     }
 
+    // switch double ap mode
+    private void switch_double_ap_mode(int current, int target) {
+        if (!double_ap_mode) {
+            // when current AP == target AP == 2
+            if (current == 2 && target == 2) {
+                // enable double ap mode
+                double_ap_mode = true;
+                for (int i = 0; i < op_num; i++) {
+                    ap_obtains[i] *= 2;
+                }
+                Toast.makeText(this, R.string.double_ap_enabled, Toast.LENGTH_LONG).show();
+            }
+        } else {
+            // when current AP == target AP == 1
+            if (current == 1 && target == 1) {
+                // disable double ap mode
+                double_ap_mode = false;
+                for (int i = 0; i < op_num; i++) {
+                    ap_obtains[i] /= 2;
+                }
+                Toast.makeText(this, R.string.double_ap_disabled, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     // set operation count text
     private void set_text() {
         for (int i = 0; i < op_num; i++) {
@@ -340,10 +366,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // get ap difference
-        ap_difference = Integer.parseInt(target_ap_text.getText().toString()) -
-                Integer.parseInt(current_ap_text.getText().toString());
+        int current = Integer.parseInt(current_ap_text.getText().toString());
+        int target = Integer.parseInt(target_ap_text.getText().toString());
+        ap_difference = target - current;
         // !@#$%^&*()_+
         show_secret_tips(ap_difference);
+        // switch double ap mode
+        switch_double_ap_mode(current, target);
         // reset conters
         fill_counters_to(0);
         // get ap differece left after substract locked operations
@@ -351,14 +380,15 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < op_num; i++)
             if (op_lock[i])
                 ap_left -= op_counters[i] * ap_obtains[i];
-        // try to get a solution
         /*Log.v("AP Difference: ", ap_difference + "");
         Log.v("AP Left:       ", ap_left + "");
         Log.v("Counter Stats: ", Arrays.toString(op_counters));
         Log.v("Lockers Stats: ", Arrays.toString(op_lock));
         Log.w("Start", "Search");*/
+        // reset recursion time
         recursion_times = 0;
-        if (ap_left < 0 || !search_solution(ap_left, 0)) {
+        // try to get a solution
+        if ((double_ap_mode && ap_difference % 2 != 0) || ap_left < 0 || !search_solution(ap_left, 0)) {
             // if faild, set counters to -1
             fill_counters_to(-1);
 
@@ -369,9 +399,9 @@ public class MainActivity extends AppCompatActivity {
                 else
                     Toast.makeText(this, R.string.try_too_many_times_tip2, Toast.LENGTH_LONG).show();
             }
+        } else {
+            have_solution = true;
         }
-
-        have_solution = true;
 
         // update UI
         set_text();

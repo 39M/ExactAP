@@ -3,8 +3,8 @@
 
     <string name="app_name">ExactAP</string>
 
-    <string name="help_info1">提示：试着点击操作名称和数字！</string>
-    <string name="help_info2">提示：长按数字来标记完成一次操作!</string>
+    <string name="help_info1">提示：试着点击操作名称和操作次数！</string>
+    <string name="help_info2">提示：长按操作次数来标记完成一次操作!</string>
 
     <string name="current_ap">当前AP</string>
     <string name="target_ap">目标AP</string>
@@ -70,5 +70,7 @@
 
     <string name="try_too_many_times_tip1">太难算啦！\nExactAP 表示放弃(╯‵□′)╯︵┻━┻</string>
     <string name="try_too_many_times_tip2">试着解锁一些操作来获得凑AP方法！</string>
+    <string name="double_ap_enabled">双倍AP模式已启用！\n此模式下你将无法凑出奇数的AP值。\n试着画个完美的鬼画符！</string>
+    <string name="double_ap_disabled">已回到单倍AP模式！</string>
 
 </resources>
