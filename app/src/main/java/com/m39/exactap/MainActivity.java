@@ -1,6 +1,7 @@
 package com.m39.exactap;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -142,7 +143,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // when press back button, move app to background
-        moveTaskToBack(true);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
     }
 
     // pick number dialog
