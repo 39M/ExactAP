@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private final int[] op_counters = new int[op_num];
     private final boolean[] op_lock = new boolean[op_num];
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     private boolean have_solution = false;
     private static final int max_recursion_time = 100000;
