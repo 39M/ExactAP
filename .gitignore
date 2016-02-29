@@ -81,3 +81,23 @@ $RECYCLE.BIN/
 
 # Android Studio captures folder
 captures/
+
+.idea/vcs.xml
+
+.idea/scopes/scope_settings.xml
+
+.idea/modules.xml
+
+.idea/misc.xml
+
+.idea/inspectionProfiles/Project_Default.xml
+
+.idea/inspectionProfiles/profiles_settings.xml
+
+.idea/gradle.xml
+
+.idea/encodings.xml
+
+.idea/compiler.xml
+
+app/app.iml
