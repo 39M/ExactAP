@@ -39,7 +39,7 @@ I'd appreciate it a lot if you are willing to donate any amount to me！
 ####捐赠  
 开发App消耗时间，发布App花费金钱（开发者账户费用）。  
 **ExactAP**完全免费，并且以MIT许可协议开源。  
-如果你愿意向我捐赠（任何金额），我会非常感激！  
+如果你愿意向我捐赠（任何数额），我会非常感激！  
   
 > 支付宝  
 > 
