@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="activity_horizontal_margin">48dp</dimen>
+    <dimen name="activity_vertical_margin">48dp</dimen>
+    <dimen name="text_horizontal_margin">48dp</dimen>
+    <dimen name="text_vertical_margin">8dp</dimen>
+    <dimen name="between_input_and_text">48dp</dimen>
+    <dimen name="label_height">72dp</dimen>
+    <dimen name="input_text_size">84sp</dimen>
+    <dimen name="label_text_size">48sp</dimen>
+    <dimen name="between_edit_text">16dp</dimen>
+</resources>
